@@ -41,6 +41,7 @@ for BUILDPACK in $(cat $1/.buildpacks); do
       echo "=====> Start downloading..."
       curl -s "$url" | tar xvz -C "$dir" >/dev/null 2>&1
     else
+      echo "=====> Git cloning..."
       git clone $url $dir >/dev/null 2>&1
       if [ -f "$dir/.gitmodules" ]; then
         echo "=====> Detected git submodules. Initializing..."
